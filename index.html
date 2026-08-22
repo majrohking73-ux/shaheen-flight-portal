@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shaheen Umrah Travel - Flight Booking</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f8fb;color:#17324d}
+header{background:#fff;padding:16px;text-align:center;font-weight:800;font-size:22px;color:#087eb5}
+.hero{background:linear-gradient(135deg,#ffc400,#ffd84d,#09bfe8);padding:42px 15px 65px;text-align:center}
+.hero h1{margin:0;color:#063d69;font-size:32px}.hero p{font-size:17px}
+.card{max-width:760px;margin:-35px auto 30px;background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 28px #0002}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.tabs button{border:2px solid #078fc2;background:#fff;color:#0784b2;border-radius:25px;padding:10px 18px;font-weight:bold}
+.tabs button.active{background:#078fc2;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.full{grid-column:1/-1}
+label{display:block;font-weight:bold;margin-bottom:6px}
+input,select,textarea{width:100%;padding:13px;border:2px solid #d2d8dd;border-radius:9px;font-size:16px}
+textarea{min-height:90px}.submit{width:100%;padding:16px;border:0;border-radius:11px;background:#078fc2;color:#fff;font-size:18px;font-weight:bold}
+.info{max-width:900px;margin:20px auto 35px;padding:15px;text-align:center}
+footer{background:#092d4d;color:#fff;text-align:center;padding:25px}
+.wa{position:fixed;right:15px;bottom:15px;background:#159b5c;color:#fff;text-decoration:none;padding:14px 20px;border-radius:30px;font-weight:bold}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+<header>✈ SHAHEEN UMRAH TRAVEL</header>
+<section class="hero"><h1>BOOK YOUR FLIGHTS</h1><p>Easy Booking • Travel Assistance • Quick WhatsApp Response</p></section>
+<section class="card">
+<div class="tabs">
+<button class="active" onclick="trip('One Way',this)">One Way</button>
+<button onclick="trip('Return',this)">Return</button>
+<button onclick="trip('Multi City',this)">Multi City</button>
+</div>
+<form onsubmit="sendWhatsApp(event)">
+<input type="hidden" id="trip" value="One Way">
+<div class="grid">
+<div><label>From *</label><input id="from" placeholder="Departure city / airport" required></div>
+<div><label>To *</label><input id="to" placeholder="Arrival city / airport" required></div>
+<div><label>Departure *</label><input id="departure" type="date" required></div>
+<div id="returnArea" style="display:none"><label>Return</label><input id="returnDate" type="date"></div>
+<div><label>Class</label><select id="class"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First Class</option></select></div>
+<div><label>Passengers</label><select id="passengers"><option>1 Adult</option><option>2 Adults</option><option>3 Adults</option><option>4 Adults</option><option>5+ Adults</option></select></div>
+<div class="full"><hr><h3>Passenger Details</h3></div>
+<div><label>Your Name *</label><input id="name" placeholder="Full name" required></div>
+<div><label>Phone / WhatsApp *</label><input id="phone" placeholder="03XXXXXXXXX" required></div>
+<div><label>Email</label><input id="email" type="email" placeholder="Optional"></div>
+<div><label>Your City *</label><input id="city" placeholder="City" required></div>
+<div class="full"><label>Message / Comments</label><textarea id="message" placeholder="Any special request"></textarea></div>
+<div class="full"><button class="submit" type="submit">✈ SEND BOOKING REQUEST ON WHATSAPP</button></div>
+</div>
+</form>
+</section>
+<div class="info"><h2>Shaheen Umrah Travel</h2><p>Flight booking request and travel assistance.</p><p><b>WhatsApp:</b> 03498942034</p></div>
+<footer>Shaheen Umrah Travel • Flight Booking</footer>
+<a class="wa" href="https://wa.me/923498942034" target="_blank">WhatsApp</a>
+<script>
+function trip(type,button){document.getElementById('trip').value=type;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));button.classList.add('active');document.getElementById('returnArea').style.display=type==='One Way'?'none':'block'}
+function sendWhatsApp(e){e.preventDefault();const msg="Shaheen Umrah Travel - Flight Booking Request\n\nTrip: "+document.getElementById('trip').value+"\nFrom: "+document.getElementById('from').value+"\nTo: "+document.getElementById('to').value+"\nDeparture: "+document.getElementById('departure').value+"\nReturn: "+(document.getElementById('returnDate').value||"N/A")+"\nClass: "+document.getElementById('class').value+"\nPassengers: "+document.getElementById('passengers').value+"\n\nName: "+document.getElementById('name').value+"\nPhone: "+document.getElementById('phone').value+"\nEmail: "+(document.getElementById('email').value||"N/A")+"\nCity: "+document.getElementById('city').value+"\nComments: "+(document.getElementById('message').value||"N/A");window.open("https://wa.me/923498942034?text="+encodeURIComponent(msg),"_blank")}
+</script>
+</body>
+</html>
